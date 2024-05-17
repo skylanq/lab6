@@ -4,32 +4,30 @@
 //Сидоров Николай Андреевич 1981
 //….
 //Воробьянинов Ипполит Матвеевич 1978
-
-//Прочитать данные из этого файла и записать в другой только те строки, //которые относятся к родившимся позднее 1980 года.
-
-int main(void) {
-  int i,k;
-  char n[50], s[50], o[50], p[100];
-  int year;
+//
+//  Прочитать данные из этого файла и записать в другой только те //строки, которые относятся к родившимся позднее 1980 года.
+int main(void){
+  int i,n,m =0;
+  
   FILE *f1;
+  char m1[50], m2[50], m3[50], m4[50];
+  f1 = fopen("lab1.txt", "r");
   FILE *f2;
-  f1 = fopen("lab.txt", "r");
   f2 = fopen("lab2.txt", "w");
-
-  for(i=0;i<5;i++){
-    fgets(n,100,f1);
-    printf("%s", n);
-    sscanf(n, "%s %s %s %d", s, o, p, &k);
-      if (k > 1980) {
-        fprintf(f2, "%s", n);
-      }
-    }
-    fclose(f1);
-    fclose(f2);
-  
-    
-  
-  
+  while (fscanf(f1, "%s", m1) != EOF){
+    m++;
+  }
+  printf("%d", m);
+  f1 = fopen("lab1.txt", "r");
+  for(i = 0; i < m; i++){
+    fgets(m1,100,f1);
+    sscanf(m1, "%s %s %s %d", m2, m3, m4, &n);
+    if (n > 1980){
+      fprintf(f2, "%s", m1);
+    }   
+  }
+  fclose(f1);
+  fclose(f2);
 
   return 0;
 }
